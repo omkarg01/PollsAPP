@@ -18,7 +18,7 @@ from django.views import generic
 #     }
 #     # return HttpResponse(template.render(context, request))
 #     return render(request, "polls/index.html", context)
-class IndexView(generic.View):
+class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = "latest_question_list"
 
@@ -30,9 +30,9 @@ class IndexView(generic.View):
 # def detail(request, question_id):
 #     question = get_object_or_404(Question, pk=question_id)
 #     return render(request, "polls/detail.html", {"question": question})
-class DetailView(generic.View):
+class DetailView(generic.DetailView):
+    model = Question
     template_name = "polls/detail.html"
-    context_object_name = "question"
     
 
 # def results(request, question_id):
